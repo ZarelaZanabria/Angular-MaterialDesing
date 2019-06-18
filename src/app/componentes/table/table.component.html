@@ -1,0 +1,50 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!-- Checkbox Column -->
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+   <!--   <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                    [aria-label]="checkboxLabel()">
+      </mat-checkbox> -->
+    </th>
+    <td mat-cell *matCellDef="let row">
+     <!--  <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)"
+                    [aria-label]="checkboxLabel(row)">
+      </mat-checkbox>  -->
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="IdHas">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.IdHas}} </td>
+  </ng-container>
+  <ng-container matColumnDef="NroConformidadServicio">
+    <th mat-header-cell *matHeaderCellDef> Nro. Aceptación de Servicio </th>
+    <td mat-cell *matCellDef="let element"> {{element.NroConformidadServicio}} </td>
+  </ng-container>
+  <ng-container matColumnDef="DocumentoMaterial">
+    <th mat-header-cell *matHeaderCellDef> Número de ERP </th>
+    <td mat-cell *matCellDef="let element"> {{element.DocumentoMaterial}} </td>
+  </ng-container>
+  <ng-container matColumnDef="EstadoDescripcion">
+    <th mat-header-cell *matHeaderCellDef> Estado </th>
+    <td mat-cell *matCellDef="let element"> {{element.EstadoDescripcion}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Proveedor">
+    <th mat-header-cell *matHeaderCellDef> Organización Proveedora </th>
+    <td mat-cell *matCellDef="let element"> {{element.Proveedor}} </td>
+  </ng-container>
+  <ng-container matColumnDef="FechaAprobacion">
+    <th mat-header-cell *matHeaderCellDef> Fecha de Aceptación </th>
+    <td mat-cell *matCellDef="let element"> {{element.FechaAprobacion}} </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+      (click)="selection.toggle(row)">
+  </tr>
+</table>
+<mat-paginator  [pageSize]="4" [pageSizeOptions]="[3, 6, 9]" ></mat-paginator>
+
