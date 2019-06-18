@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
+import {PageEvent} from '@angular/material/paginator';
 
 
 export interface ListaHas {
@@ -108,6 +109,17 @@ export class TableComponent implements OnInit {
   public displayedColumns: string[] = ['select', 'IdHas', 'NroConformidadServicio', 'DocumentoMaterial', 'Proveedor', 'EstadoDescripcion', 'FechaAprobacion'];
   public dataSource = new MatTableDataSource<ListaHas>(ELEMENT_DATA);
   public selection = new SelectionModel<ListaHas>(true, []);
+
+  /* Pagination */
+
+  length = 100;
+  pageSize = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+  pageEvent: PageEvent;
+
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  }
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {

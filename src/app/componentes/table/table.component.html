@@ -46,5 +46,9 @@
       (click)="selection.toggle(row)">
   </tr>
 </table>
-<mat-paginator  [pageSize]="4" [pageSizeOptions]="[3, 6, 9]" ></mat-paginator>
+<mat-paginator [length]="length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              (page)="pageEvent = $event">
+</mat-paginator>
 
